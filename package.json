@@ -1,0 +1,57 @@
+{
+  "name": "local-navbar",
+  "version": "1.0.0",
+  "description": "A minimal Windows 11 floating prompt launcher for the ChatGPT desktop app.",
+  "main": "electron/main.js",
+  "author": "Local Navbar",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "electron .",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "@vitejs/plugin-react": "^5.0.0",
+    "clipboardy": "^5.3.1",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "electron": "^42.2.0",
+    "electron-builder": "^26.8.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.0"
+  },
+  "build": {
+    "appId": "com.localnavbar.commandwidget",
+    "productName": "Local Navbar",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/**/*.node",
+      "node_modules/**/*.dll"
+    ],
+    "win": {
+      "target": "nsis",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
